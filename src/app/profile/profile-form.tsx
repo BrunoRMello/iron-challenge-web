@@ -96,13 +96,11 @@ export function ProfileForm() {
 
   async function onSubmit(values: z.infer<typeof profileUserSchema>) {
     try {
+      const { email, ...restOfValues } = values;
+      
       const dataToSend = {
-        ...values,
+        ...restOfValues,
         phone: Number(values.phone.replace(/\D/g, '')),
-      }
-
-      if (userData?.email) {
-        delete (dataToSend as Partial<typeof dataToSend>).email
       }
 
       await updateUser(dataToSend)
