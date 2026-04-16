@@ -150,7 +150,11 @@ export function Header() {
 
           {userData?.role === 'admin' && <CreateEventModal />}
 
-          <div className="mt-2 flex items-center gap-3">
+          <Link
+            href="/profile"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-muted"
+          >
             <Avatar className="size-9 rounded-lg">
               <AvatarImage src={userPhotoURL} />
               <AvatarFallback>{userNameInitials}</AvatarFallback>
@@ -160,7 +164,8 @@ export function Header() {
               <p className="text-sm font-medium">{userName}</p>
               <p className="text-xs text-muted-foreground">{userEmail}</p>
             </div>
-          </div>
+          </Link>
+
 
           <Button
             variant="outline"
